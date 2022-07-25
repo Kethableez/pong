@@ -2,7 +2,7 @@ export const gameSettings = {
   game: {
     speed: 400,
     barLength: 100,
-    maxPoints: 1,
+    maxPoints: 11,
   },
   style: {
     score: {

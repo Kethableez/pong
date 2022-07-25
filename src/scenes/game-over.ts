@@ -11,11 +11,9 @@ export default class GameOver extends Phaser.Scene {
 
   init() {
     this.settings = this.registry.get('settings');
-    console.log('create 1');
   }
 
   preload() {
-    console.log('create 2');
   }
 
   create() { 
