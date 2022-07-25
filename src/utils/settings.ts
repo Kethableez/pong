@@ -2,7 +2,7 @@ export const gameSettings = {
   game: {
     speed: 400,
     barLength: 100,
-    maxPoints: 11,
+    maxPoints: 1,
   },
   style: {
     score: {
@@ -34,6 +34,7 @@ export const gameSettings = {
     h2: {
       fontFamily: '"Press Start 2P"',
       fontSize: '32px',
+      align: 'center',
       padding: { left: 15, right: 15, top: 10, bottom: 10 },
       color: '#000000',
       backgroundColor: '#ffffff'

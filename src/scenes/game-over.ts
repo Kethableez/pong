@@ -4,7 +4,6 @@ import Label from '~/game/label';
 export default class GameOver extends Phaser.Scene {
 
   private settings: any;
-  private enterTime: null | number = null;
   
   constructor() {
     super(SceneKey.GAME_OVER);
@@ -12,30 +11,28 @@ export default class GameOver extends Phaser.Scene {
 
   init() {
     this.settings = this.registry.get('settings');
+    console.log('create 1');
   }
 
   preload() {
-
+    console.log('create 2');
   }
 
   create() { 
     new Label(this, this.scale.width / 2 , this.scale.height / 2 - 50, 'GAME OVER', this.settings.style.h1);
     new Label(this, this.scale.width / 2 , this.scale.height / 2 + 40, 'Press SPACE to restart', this.settings.style.h2);
+    new Label(this, this.scale.width / 2 , this.scale.height / 2 + 100, 'Press Q to quit', this.settings.style.h2);
 
-    this.input.keyboard.on('keydown-SPACE', () => {
+
+    this.input.keyboard.once('keydown-SPACE', () => {
       this.scene.stop(SceneKey.GAME_OVER);
       this.scene.start(SceneKey.GAME);
     })
-  }
 
-  update(time: number, delta: number): void {
-      if (!this.enterTime) this.enterTime = time;
-      
-      if (this.enterTime + 5000 < time) {
-        this.enterTime = null;
-        this.scene.stop(SceneKey.GAME_OVER);
-        this.scene.stop(SceneKey.GAME);
-        this.scene.start(SceneKey.START);
-      }
+    this.input.keyboard.once('keydown-Q', () => {
+      this.scene.stop(SceneKey.GAME_OVER);
+      this.scene.stop(SceneKey.GAME);
+      this.scene.start(SceneKey.START);
+    })
   }
 }

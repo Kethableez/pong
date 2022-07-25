@@ -10,7 +10,8 @@ export class Ball extends Phaser.GameObjects.Rectangle {
     this.ball = scene.add.rectangle(x, y, size, size, color);
     this.size = size;
     this.speed = speed || 400;
-    this.dirAngle = Phaser.Math.Between(0, 360);
+
+    this.dirAngle = this.calculateAngle();
 
     scene.physics.add.existing(this.ball);
     (this.ball.body as Phaser.Physics.Arcade.Body).setCollideWorldBounds(true);
@@ -32,6 +33,23 @@ export class Ball extends Phaser.GameObjects.Rectangle {
     this.ball.body.position.y = this.scene.scale.height / 2 - this.size / 2
     this.ball.body.velocity.y =  0;
     this.ball.body.velocity.x = 0;
+  }
+
+  calculateAngle() {
+    const opt = Phaser.Math.Between(0, 3);
+    const ang = Phaser.Math.Between(0, 65);
+
+    switch(opt) {
+      case 0:
+      default:
+        return ang;
+      case 1:
+        return 360 - ang;
+      case 2:
+        return 180 - ang;
+      case 3: 
+        return 180 + ang;
+    }
   }
 
   preUpdate() {

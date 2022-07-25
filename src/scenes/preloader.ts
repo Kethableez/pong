@@ -13,7 +13,6 @@ export default class Preloader extends Phaser.Scene {
 
   create() {
     this.registry.set('settings', gameSettings);
-    
     this.scene.start(SceneKey.START);
   }
 }
