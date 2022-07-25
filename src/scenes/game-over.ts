@@ -32,6 +32,7 @@ export default class GameOver extends Phaser.Scene {
       if (!this.enterTime) this.enterTime = time;
       
       if (this.enterTime + 5000 < time) {
+        this.enterTime = null;
         this.scene.stop(SceneKey.GAME_OVER);
         this.scene.stop(SceneKey.GAME);
         this.scene.start(SceneKey.START);
